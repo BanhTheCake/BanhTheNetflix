@@ -8,6 +8,7 @@
 
 # Features
 
+-   Full responsive
 -   Dark mode (Default)
 -   Load more data
 -   Authentication with JWT
