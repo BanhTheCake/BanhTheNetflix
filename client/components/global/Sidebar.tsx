@@ -11,7 +11,7 @@ import Logo from './Logo';
 
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
-import { Box, Button, Drawer, Typography } from '@mui/material';
+import { Box, Button, Drawer, Stack, Typography } from '@mui/material';
 
 interface SideBarProps {
     anchor: 'left' | 'top' | 'right' | 'bottom';
@@ -53,10 +53,10 @@ const Sidebar: FC<SideBarProps> = ({ anchor, open, close }) => {
                     mx="auto"
                 >
                     <Typography variant="h6">Menu</Typography>
-                    <Box
+                    <Stack
                         display="flex"
                         flexDirection={'column'}
-                        gap="10px"
+                        spacing="10px"
                         mt={1}
                         sx={{ width: '100%' }}
                     >
@@ -100,7 +100,7 @@ const Sidebar: FC<SideBarProps> = ({ anchor, open, close }) => {
                                 </Link>
                             );
                         })}
-                    </Box>
+                    </Stack>
                 </Box>
                 <Box>
                     <Typography variant="h6">Theme</Typography>

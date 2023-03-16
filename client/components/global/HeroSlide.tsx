@@ -6,24 +6,27 @@ import { FC, useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import HeroItem from '../Media/HeroItem';
-
 interface HeroSlideProps {
     mediaType: string;
     mediaCategory: string;
 }
 
 const HeroSlide: FC<HeroSlideProps> = ({ mediaType, mediaCategory }) => {
-    const { data } = useQuery(['media', mediaType, mediaCategory], () =>
-        getMediaList({
-            mediaType: mediaType,
-            mediaCategory: mediaCategory,
-            page: '1',
-        }), {
-        enabled: !!mediaType && !!mediaCategory,
-        onError: (err) => {
-            console.log('err: ', err);
-        },
-    });
+    const { data } = useQuery(
+        ['media', mediaType, mediaCategory],
+        () =>
+            getMediaList({
+                mediaType: mediaType,
+                mediaCategory: mediaCategory,
+                page: '1',
+            }),
+        {
+            enabled: !!mediaType && !!mediaCategory,
+            onError: (err) => {
+                console.log('err: ', err);
+            },
+        }
+    );
 
     const medias = useMemo(() => {
         if (!data) return undefined;

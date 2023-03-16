@@ -4,10 +4,11 @@ import { Swiper } from "swiper/react";
 import { Navigation, Pagination } from 'swiper';
 
 interface ManualSwiperProps {
-    children: React.ReactNode
+    children: React.ReactNode,
+    isPagination?: boolean
 }
 
-const ManualSwiper: FC<ManualSwiperProps> = ({ children }) => {
+const ManualSwiper: FC<ManualSwiperProps> = ({ children, isPagination = true }) => {
 
     return <Box sx={{
         '& .swiper-slide': {
@@ -18,14 +19,24 @@ const ManualSwiper: FC<ManualSwiperProps> = ({ children }) => {
         },
         '& .swiper-pagination-bullet': {
             backgroundColor: 'text.primary',
+            ...(isPagination ? {} : { display: 'none' })
         },
         '& .swiper-button-prev': {
             color: 'white',
-            zIndex: 20
+            zIndex: 20,
+            transform: {
+                xs: 'scale(0.8)',
+                md: 'scale(1)'
+            }
         },
         '& .swiper-button-next': {
             color: 'white',
-            zIndex: 20
+            zIndex: 20,
+            transform: {
+                xs: 'scale(0.8)',
+                md: 'scale(1)'
+            }
+
         },
     }}>
         <Box />

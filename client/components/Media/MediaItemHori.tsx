@@ -50,7 +50,7 @@ const MediaItemHorizontal: FC<MediaItemHorizontalProps> = ({
                     pathname: `/${item.mediaType}/${item.mediaId}`,
                 }}
             >
-                <Stack direction={'row'} gap={2}>
+                <Stack direction={'row'} spacing={2}>
                     <Box display={{ xs: 'none', md: 'block' }}>
                         <Box
                             position="relative"

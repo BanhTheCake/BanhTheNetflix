@@ -1,7 +1,7 @@
 import tmdbConfig from '@/utils/config/tmdbConfig';
 import uiConfigs from '@/utils/config/uiConfig';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
@@ -43,14 +43,14 @@ const MediaItem: FC<MediaItemProps> = ({ rate, title, year, poster_path, mediaTy
                         className="overlay"
                         sx={{
                             ...uiConfigs.style.gradientBgImage.dark,
-                            inset: '0',
+                            ...uiConfigs.style.inset,
                             opacity: 0,
                             transition: 'all .2s ease',
                         }}
                     />
                 </Box>
-                <Box position={'absolute'} sx={{ inset: '0' }}>
-                    <Box
+                <Box position={'absolute'} sx={{ ...uiConfigs.style.inset }}>
+                    <Stack
                         position={'absolute'}
                         sx={{
                             bottom: '-20%',
@@ -60,9 +60,7 @@ const MediaItem: FC<MediaItemProps> = ({ rate, title, year, poster_path, mediaTy
                             transition: 'all .4s ease',
                         }}
                         p={2}
-                        display="flex"
-                        flexDirection={'column'}
-                        gap={0.5}
+                        spacing={0.5}
                         className="mediaTitle"
                         color="white"
                     >
@@ -77,18 +75,19 @@ const MediaItem: FC<MediaItemProps> = ({ rate, title, year, poster_path, mediaTy
                         <Typography
                             fontWeight={'500'}
                             sx={{
+                                position: 'relative',
                                 whiteSpace: 'nowrap',
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
+                                overflow: "hidden",
+                                textOverflow: 'ellipsis'
                             }}
                         >
                             {title}
                         </Typography>
-                    </Box>
+                    </Stack>
                     <Box
                         position={'absolute'}
                         sx={{
-                            inset: '0',
+                            ...uiConfigs.style.inset,
                             opacity: 0,
                             transition: 'all .4s ease',
                         }}

@@ -33,24 +33,24 @@ const MediaImages: FC<MediaImagesProps> = ({ mediaType, mediaId }) => {
     }, [data])
 
     return <>
-        <Container maxWidth={false} sx={{ maxWidth: '1400px', my: 8 }}>
+        <Container maxWidth={false} sx={{ maxWidth: '1400px', my: 6 }}>
             <TitleLine title="Backdrops" />
             <ManualSwiper>
                 {backdrops && backdrops.length > 0 && backdrops.slice(0, 10).map(backdrop => {
                     return <SwiperSlide key={backdrop.file_path}>
-                        <Box sx={{ position: 'relative', aspectRatio: '16/8', mb: 5 }}>
+                        <Box sx={{ position: 'relative', mb: 5, paddingTop: '56.25%' }}>
                             <ImageCustom src={tmdbConfig.backdrop_path(backdrop.file_path)} alt={'backdrop'} />
                         </Box>
                     </SwiperSlide>
                 })}
             </ManualSwiper>
         </Container>
-        <Container maxWidth={false} sx={{ maxWidth: '1400px', my: 8 }}>
+        <Container maxWidth={false} sx={{ maxWidth: '1400px', my: 6 }}>
             <TitleLine title="Posters" />
             <AutoSwiper>
                 {posters && posters.length > 0 && posters.map(poster => {
                     return <SwiperSlide key={poster.file_path}>
-                        <Box sx={{ position: 'relative', aspectRatio: '4/5' }}>
+                        <Box sx={{ position: 'relative', paddingTop: { xs: '140%', md: '120%' } }}>
                             <ImageCustom src={tmdbConfig.poster_path(poster.file_path)} alt='poster' />
                         </Box>
                     </SwiperSlide>

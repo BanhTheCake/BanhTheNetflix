@@ -43,7 +43,7 @@ const FavoritesPage = () => {
         <DefaultLayout>
             <Container maxWidth={false} sx={{ maxWidth: '1400px', pt: 10 }}>
                 <TitleLine title="Your favories" />
-                <Stack direction="column" gap={1}>
+                <Stack direction="column" spacing={1}>
                     {favorites &&
                         favorites.length > 0 &&
                         favorites.map((favorite) => {

@@ -27,6 +27,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import App from 'next/app';
 import AxiosConfig from '@/layouts/AxiosConfig';
+import NextNProgress from 'nextjs-progressbar';
 
 interface MyAppProps extends AppProps {
   auth: AuthState | null
@@ -56,6 +57,7 @@ export default function MyApp({ Component, pageProps, auth }: MyAppProps) {
           <Hydrate state={pageProps.dehydratedState}>
             <AuthProvider value={auth}>
               <AxiosConfig>
+                <NextNProgress options={{ showSpinner: false }} />
                 <Component {...pageProps} />
               </AxiosConfig>
             </AuthProvider>

@@ -151,7 +151,7 @@ const MediaReviews: FC<MediaReviewsProps> = ({ mediaType, mediaId }) => {
         <Container maxWidth={false} sx={{ maxWidth: '1400px', py: '20px' }}>
             <TitleLine title={`Reviews (${reviews.length})`} />
             {reviews.length > 0 && (
-                <Stack direction={'column'} gap={2} pb={2}>
+                <Stack direction={'column'} spacing={2} pb={2}>
                     {reviews.map((review) => {
                         return (
                             <Comment key={review.id} review={review} onDelete={onDeleteReview} onUpdate={onUpdateReview} />
@@ -166,7 +166,7 @@ const MediaReviews: FC<MediaReviewsProps> = ({ mediaType, mediaId }) => {
                 {auth.user && auth.token &&
                     <Stack
                         direction="row"
-                        gap={2}
+                        spacing={2}
                         sx={{
                             color: 'text.secondary',
                             p: 1.5,
@@ -176,10 +176,8 @@ const MediaReviews: FC<MediaReviewsProps> = ({ mediaType, mediaId }) => {
                         }}
                     >
                         <Ava name={auth.user.displayName} />
-                        <Box
-                            display={'flex'}
-                            flexDirection="column"
-                            gap={1.5}
+                        <Stack
+                            spacing={1.5}
                             alignItems={'start'}
                             sx={{
                                 flex: 1,
@@ -226,7 +224,7 @@ const MediaReviews: FC<MediaReviewsProps> = ({ mediaType, mediaId }) => {
                             >
                                 Post
                             </Button>
-                        </Box>
+                        </Stack>
                     </Stack>
                 }
             </Box>

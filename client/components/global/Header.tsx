@@ -119,9 +119,10 @@ const Header = () => {
                             width={'100%'}
                             alignItems={'center'}
                         >
-                            <Box
+                            <Stack
+                                direction='row'
                                 display={'flex'}
-                                gap="16px"
+                                spacing="16px"
                                 alignItems={'center'}
                             >
                                 <IconButton
@@ -133,10 +134,11 @@ const Header = () => {
                                     <MenuOutlinedIcon />
                                 </IconButton>
                                 <Logo />
-                                <Box
+                                <Stack
+                                    direction='row'
                                     display={['none', 'flex']}
                                     alignItems={'center'}
-                                    gap="16px"
+                                    spacing="16px"
                                 >
                                     {menu.link.map((item) => {
                                         const isActives =
@@ -183,8 +185,8 @@ const Header = () => {
                                             <LightModeOutlinedIcon />
                                         )}
                                     </IconButton>
-                                </Box>
-                            </Box>
+                                </Stack>
+                            </Stack>
                             <Box>
                                 {!auth.token && (
                                     <Button

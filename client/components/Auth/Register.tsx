@@ -10,7 +10,7 @@ import Logo from '../global/Logo';
 import { AuthPage } from '../global/AuthModal';
 import { register as registerFn } from '@/utils/api/auth.api';
 
-import { Box, Button, ButtonGroup, TextField } from '@mui/material';
+import { Box, Button, ButtonGroup, Stack, TextField } from '@mui/material';
 
 
 type RegisterInputs = {
@@ -76,7 +76,7 @@ const Register: FC<RegisterProps> = ({ toggleState }) => {
             <Box pb={4} mt={1}>
                 <Logo />
             </Box>
-            <Box component={'form'} onSubmit={handleSubmit(onSubmit)} display={'flex'} flexDirection="column" gap={'20px'}>
+            <Stack component={'form'} onSubmit={handleSubmit(onSubmit)} display={'flex'} flexDirection="column" spacing={'20px'}>
                 <TextField
                     id="username"
                     label="Tên đăng ký"
@@ -119,7 +119,7 @@ const Register: FC<RegisterProps> = ({ toggleState }) => {
                 >
                     Đăng ký
                 </Button>
-                <ButtonGroup sx={{ gap: '10px' }}>
+                <Stack direction={'row'} spacing={'10px'}>
                     <Button
                         sx={{ width: '50%', color: 'text.primary' }}
                         variant="text"
@@ -133,8 +133,8 @@ const Register: FC<RegisterProps> = ({ toggleState }) => {
                     >
                         Quên mật khẩu
                     </Button>
-                </ButtonGroup>
-            </Box>
+                </Stack>
+            </Stack>
         </Box>
     );
 };

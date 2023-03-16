@@ -17,7 +17,7 @@ const CastItem: FC<CastItemProps> = ({ actor }) => {
     >
         <Box
             position={'relative'}
-            sx={{ aspectRatio: '5/6' }}
+            sx={{ paddingTop: '120%' }}
         >
             <ImageCustom
                 src={tmdbConfig.poster_path(

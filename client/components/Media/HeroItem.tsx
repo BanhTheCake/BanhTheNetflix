@@ -10,7 +10,7 @@ import Rate from "../global/Rate";
 import Genres from "./Genres";
 
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import { Box, Typography, Button } from '@mui/material'
+import { Box, Typography, Button, Stack } from '@mui/material'
 
 
 interface HeroItemProps {
@@ -43,7 +43,7 @@ const HeroItem: FC<HeroItemProps> = ({ backdrop_path, title, rate, overview, gen
             },
         }}
     >
-        <Box position="absolute" sx={{ inset: 0 }}>
+        <Box position="absolute" sx={{ ...uiConfigs.style.inset }}>
             <Image
                 src={tmdbConfig.backdrop_path(backdrop_path)}
                 alt="backdrop"
@@ -79,16 +79,16 @@ const HeroItem: FC<HeroItemProps> = ({ backdrop_path, title, rate, overview, gen
             maxWidth={['90%', '80%']}
             m="auto"
             position={'absolute'}
-            sx={{ inset: '0' }}
+            sx={{ ...uiConfigs.style.inset }}
             color="text.primary"
             display="flex"
         >
             <Box my="auto">
-                <Box
+                <Stack
                     width={['100%', '60%']}
                     display="flex"
                     flexDirection={'column'}
-                    gap={3}
+                    spacing={3}
                 >
                     <Typography
                         variant="h3"
@@ -101,14 +101,15 @@ const HeroItem: FC<HeroItemProps> = ({ backdrop_path, title, rate, overview, gen
                     >
                         {title}
                     </Typography>
-                    <Box
+                    <Stack
                         display={'flex'}
                         alignItems="center"
-                        gap={2}
+                        spacing={2}
+                        direction={'row'}
                     >
                         <Rate value={rate} />
                         <Genres ids={genres} />
-                    </Box>
+                    </Stack>
                     <Typography
                         fontSize={'16px'}
                         sx={{
@@ -136,7 +137,7 @@ const HeroItem: FC<HeroItemProps> = ({ backdrop_path, title, rate, overview, gen
                     >
                         Watch Now
                     </Button>
-                </Box>
+                </Stack>
             </Box>
         </Box>
     </Box>;

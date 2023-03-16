@@ -10,8 +10,7 @@ const AutoSwiper: FC<AuthSwiperProps> = ({ children }) => {
     return <Box sx={{
         '& .swiper-slide': {
             width: {
-                xs: "100%",
-                sm: "50%",
+                xs: "50%",
                 md: "25%",
                 lg: "20%"
             }

@@ -58,7 +58,7 @@ const Comment: FC<CommentProps> = ({ review, onDelete, onUpdate }) => {
         <Box>
             <Stack
                 direction="row"
-                gap={2}
+                spacing={2}
                 position="relative"
                 sx={{
                     color: 'text.primary',

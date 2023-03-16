@@ -54,6 +54,7 @@ export default function Home() {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const res = context.res
   const queryClient = new QueryClient();
   await Promise.all([
     queryClient.prefetchQuery(
@@ -91,6 +92,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     ),
     queryClient.prefetchQuery(['genres'], getGenres),
   ]);
+
+  res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')
+
   return {
     props: {
       dehydratedState: dehydrate(queryClient),

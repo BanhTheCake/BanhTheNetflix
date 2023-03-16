@@ -7,6 +7,7 @@ import { SwiperSlide } from 'swiper/react';
 import uiConfigs from '@/utils/config/uiConfig';
 import tmdbConfig from '@/utils/config/tmdbConfig';
 import TitleLine from '../global/TitleLine';
+import ReactPlayer from 'react-player'
 
 interface MediaVideosProps {
     mediaType: string;
@@ -36,28 +37,22 @@ const MediaVideos: FC<MediaVideosProps> = ({ mediaType, mediaId }) => {
     return (
         <Container maxWidth={false} sx={{ maxWidth: '1400px', my: 8 }}>
             <TitleLine title="Videos" />
-            <ManualSwiper>
+            <ManualSwiper isPagination={false}>
                 {videoIds.length > 0 &&
                     videoIds.slice(0, 3).map((videoId) => {
                         return (
                             <SwiperSlide key={videoId.id}>
                                 <Box
                                     sx={{
-                                        '& iframe': {
-                                            width: '100%',
-                                            aspectRatio: '16/8',
-                                            pb: 4,
-                                        },
+                                        width: '100%',
+                                        paddingTop: '56.25%',
+                                        pb: 4,
+                                        position: 'relative',
                                     }}
                                 >
-                                    <iframe
-                                        title={videoId.id}
-                                        key={videoId.key}
-                                        src={tmdbConfig.youtube_path(
-                                            videoId.key
-                                        )}
-                                        frameBorder={0}
-                                    ></iframe>
+                                    <ReactPlayer url={tmdbConfig.youtube_path(
+                                        videoId.key
+                                    )} style={{ position: 'absolute', ...uiConfigs.style.inset }} width='100%' height={'100%'} controls />
                                 </Box>
                             </SwiperSlide>
                         );

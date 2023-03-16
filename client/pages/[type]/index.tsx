@@ -104,7 +104,7 @@ const MediaTypePage: FC<MediaTypePageProps> = () => {
                     sx={{ width: '100%', py: 3 }}
                     justifyContent={'space-between'}
                     alignItems={'center'}
-                    gap={2}
+                    spacing={2}
                     color={'text.primary'}
                 >
                     <Typography
@@ -116,7 +116,7 @@ const MediaTypePage: FC<MediaTypePageProps> = () => {
                         {type === 'movie' && 'movies'}
                         {type === 'tv' && 'TV series'}
                     </Typography>
-                    <Stack direction={'row'} gap={3}>
+                    <Stack direction={'row'} spacing={3}>
                         {btns.map((btn) => {
                             const isActives = btn.path === category;
                             return (

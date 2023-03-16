@@ -46,7 +46,7 @@ const ActorDetailsPage = () => {
                             xs: 'column',
                             md: 'row',
                         }}
-                        gap={2}
+                        spacing={2}
                         alignItems={{ xs: 'center', md: 'start' }}
                     >
                         <Box
@@ -56,13 +56,17 @@ const ActorDetailsPage = () => {
                                     xs: '90%',
                                     sm: '250px',
                                 },
-                                aspectRatio: {
-                                    xs: '4/5',
-                                    sm: '4/6',
-                                },
                                 flexShrink: 0,
                             }}
                         >
+                            <Box sx={{
+                                paddingTop: {
+                                    xs: '125%',
+                                    sm: '150%',
+                                },
+                            }}>
+
+                            </Box>
                             <ImageCustom src={tmdbConfig.poster_path(person.profile_path)}
                                 alt={person.name || 'person'} />
                         </Box>

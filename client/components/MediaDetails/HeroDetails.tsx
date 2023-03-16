@@ -120,7 +120,7 @@ const HeroDetails: FC<HeroDetailsProps> = ({ mediaType, mediaId }) => {
                 <Box
                     sx={{
                         position: 'absolute',
-                        inset: 0,
+                        ...uiConfigs.style.inset,
                         ...uiConfigs.style.gradientBgImage[mode],
                     }}
                 />
@@ -128,33 +128,33 @@ const HeroDetails: FC<HeroDetailsProps> = ({ mediaType, mediaId }) => {
         </Box>
         <Container maxWidth={false} sx={{ position: 'relative', maxWidth: '1400px' }}>
             <Stack
-                gap={4}
-                sx={{ mt: { xs: '-10%', md: '-30%' } }}
+                spacing={4}
+                sx={{ mt: { xs: '-5%', md: '-30%' } }}
                 direction={{ xs: 'column', md: 'row' }}
                 justifyContent={'center'}
                 alignItems={{ xs: 'center', md: 'start' }}
             >
                 <Box
-                    position={'relative'}
                     sx={{
                         width: { xs: '80%', md: '40%' },
-                        aspectRatio: '5/6'
                     }}
                 >
-                    <Image
-                        src={tmdbConfig.poster_path(media.poster_path)}
-                        alt={'poster'}
-                        fill
-                        sizes="auto"
-                        style={{
-                            objectFit: 'cover',
-                            objectPosition: 'center',
-                            borderRadius: '10px'
-                        }}
-                    />
+                    <Box position={'relative'} sx={{ paddingTop: '120%', width: '100%' }}>
+                        <Image
+                            src={tmdbConfig.poster_path(media.poster_path)}
+                            alt={'poster'}
+                            fill
+                            sizes="auto"
+                            style={{
+                                objectFit: 'cover',
+                                objectPosition: 'center',
+                                borderRadius: '10px'
+                            }}
+                        />
+                    </Box>
                 </Box>
                 <Stack
-                    gap={3}
+                    spacing={3}
                     sx={{ color: 'text.primary', width: { xs: '100%', md: '60%' } }}
                 >
                     <Typography
@@ -164,17 +164,17 @@ const HeroDetails: FC<HeroDetailsProps> = ({ mediaType, mediaId }) => {
                     >
                         {media?.title || media?.original_name}
                     </Typography>
-                    <Box display={'flex'} alignItems="center" gap={'16px'}>
+                    <Stack display={'flex'} alignItems="center" spacing={'16px'} direction={'row'}>
                         {media.vote_average ? <Rate value={Math.round(media.vote_average)} /> : ''}
                         <Genres ids={media.genres.reduce((arr, item) => [...arr, item.id], [] as number[])} />
-                    </Box>
+                    </Stack>
                     <Typography fontSize={'16px'}>
                         {media.overview}
                     </Typography>
                     <Stack
                         direction={'row'}
                         justifyContent={'flex-start'}
-                        gap={2}
+                        spacing={2}
                     >
                         <Button size="large" color="error" onClick={onFavoriteClick}>
                             {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}

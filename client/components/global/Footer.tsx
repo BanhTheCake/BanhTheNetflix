@@ -14,13 +14,13 @@ const Footer: FC<FooterProps> = ({ }) => {
             <Stack width={'100%'} direction={{
                 md: 'column',
                 lg: 'row'
-            }} alignItems='center' gap={1} justifyContent={'space-between'} sx={{
+            }} alignItems='center' spacing={1} justifyContent={'space-between'} sx={{
                 py: { xs: 2, lg: 0 }
             }}>
                 <Box>
                     <Logo />
                 </Box>
-                <Box display={'flex'} gap={'8px'} flexWrap='wrap' justifyContent={'center'}>
+                <Stack direction='row' display={'flex'} spacing={'8px'} flexWrap='wrap' justifyContent={'center'}>
                     {menu.link.map(item => {
                         return <Link key={item.href} href={{
                             pathname: item.href,
@@ -31,7 +31,7 @@ const Footer: FC<FooterProps> = ({ }) => {
                             </Button>
                         </Link>
                     })}
-                </Box>
+                </Stack>
             </Stack>
         </Toolbar>
     </AppBar>;

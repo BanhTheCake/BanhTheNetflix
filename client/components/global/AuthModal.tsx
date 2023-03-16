@@ -18,7 +18,7 @@ const AuthModal: FC<AuthModalProps> = ({ open, close }) => {
     }
 
     return (
-        <Modal open={open} onClose={close}>
+        <Modal open={open} onClose={close} >
             <Box
                 bgcolor={'transparent'}
                 sx={{
@@ -26,6 +26,7 @@ const AuthModal: FC<AuthModalProps> = ({ open, close }) => {
                     top: '50%',
                     left: '50%',
                     transform: 'translate(-50%, -50%)',
+                    outline: 'none'
                 }}
                 p={2}
                 maxWidth={'100%'}

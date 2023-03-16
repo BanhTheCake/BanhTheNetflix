@@ -18,7 +18,7 @@ const Genres: FC<GenresProps> = ({ ids }) => {
 
     if (!genres) return <></>
 
-    return <Stack direction={'row'} gap={1.5}>
+    return <Stack direction={'row'} spacing={1.5}>
         {ids.length > 0 && ids.slice(0, 2).map(id => {
             return <Button
                 key={id}

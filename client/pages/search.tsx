@@ -121,7 +121,7 @@ const SearchPage = () => {
             >
                 <Stack
                     direction="row"
-                    gap={1.5}
+                    spacing={1.5}
                     sx={{
                         color: 'text.primary',
                         width: '100%',

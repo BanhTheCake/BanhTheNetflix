@@ -11,7 +11,7 @@ import { AuthPage } from '../global/AuthModal';
 import { login } from '@/utils/api/auth.api';
 import { useAuth } from '@/context/auth.context';
 
-import { Box, TextField, Button, ButtonGroup } from '@mui/material';
+import { Box, TextField, Button, ButtonGroup, Stack } from '@mui/material';
 
 type loginInputs = {
     username: string;
@@ -76,12 +76,12 @@ const Login: FC<LoginProps> = ({ toggleState, close }) => {
             <Box pb={4} mt={1}>
                 <Logo />
             </Box>
-            <Box
+            <Stack
                 component={'form'}
                 onSubmit={handleSubmit(onSubmit)}
                 display={'flex'}
                 flexDirection="column"
-                gap={'20px'}
+                spacing={'20px'}
             >
                 <TextField
                     id="username"
@@ -110,7 +110,7 @@ const Login: FC<LoginProps> = ({ toggleState, close }) => {
                 >
                     Đăng nhập
                 </Button>
-                <ButtonGroup sx={{ gap: '10px' }}>
+                <Stack direction={'row'} spacing={'10px'}>
                     <Button
                         sx={{ width: '50%', color: 'text.primary' }}
                         variant="text"
@@ -124,8 +124,8 @@ const Login: FC<LoginProps> = ({ toggleState, close }) => {
                     >
                         Quên mật khẩu
                     </Button>
-                </ButtonGroup>
-            </Box>
+                </Stack>
+            </Stack>
         </Box>
     );
 };
