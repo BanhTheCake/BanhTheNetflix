@@ -88,23 +88,17 @@ export const refresh = async () => {
         throw error;
     }
 };
-
-interface PersistUserProps {
-    headers: any;
-}
-
 interface PersistUserRes {
     token: string;
     user: User;
 }
 
-export const persistUser = async ({ headers }: PersistUserProps) => {
+export const persistUser = async () => {
     try {
         return await requestApi<PersistUserRes>(axios, {
             method: 'get',
             url: authUrl.persist,
             withCredentials: true,
-            headers: { ...headers },
         });
     } catch (error) {
         throw error;

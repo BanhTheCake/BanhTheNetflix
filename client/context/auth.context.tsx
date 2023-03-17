@@ -25,22 +25,10 @@ const authContext = React.createContext<AuthContext>({
 
 interface AuthProviderProps {
     children: React.ReactNode;
-    value: AuthState | null;
 }
 
-export const getUser = async (ctx: NextPageContext) => {
-    try {
-        const data = await persistUser({
-            headers: { cookie: ctx.req?.headers.cookie }
-        })
-        return data
-    } catch (error) {
-        return null;
-    }
-}
-
-const AuthProvider: FC<AuthProviderProps> = ({ children, value }) => {
-    const [auth, setAuth] = useState<AuthState>(value ? value : initAuthState);
+const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
+    const [auth, setAuth] = useState<AuthState>(initAuthState);
     const setAuthState = (value: Partial<AuthState>) => {
         setAuth((prev) => ({ ...prev, ...value }));
     };

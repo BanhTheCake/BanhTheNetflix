@@ -7,8 +7,13 @@ import MediaSlide from '@/components/Media/MediaSlide';
 import HeroSlide from '@/components/global/HeroSlide';
 import DefaultLayout from '@/layouts/DefaultLayout';
 import { getGenres, getMediaList } from '@/utils/api/media.api';
+import { useEffect } from 'react';
+import { initAuthState, useAuth } from '@/context/auth.context';
 
-export default function Home() {
+interface HomeProps {
+}
+
+export default function Home({ }: HomeProps) {
   return (
     <>
       <Head>
@@ -56,6 +61,7 @@ export default function Home() {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const res = context.res
   const queryClient = new QueryClient();
+
   await Promise.all([
     queryClient.prefetchQuery(
       ['media', tmdbConfig.mediaType.MOVIE, tmdbConfig.mediaCategory.POPULAR],
@@ -93,7 +99,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     queryClient.prefetchQuery(['genres'], getGenres),
   ]);
 
-  res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')
+  res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=3600')
 
   return {
     props: {

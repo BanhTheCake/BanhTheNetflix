@@ -39,7 +39,7 @@ export class FavoriteService {
   async createNewFavorite(data: NewFavoritesDto, userId: string): Promise<TR> {
     try {
       const duplicateFavorite = await this.favoritesModel.findOne({
-        where: { mediaId: data.mediaId },
+        where: { mediaId: data.mediaId, userId: userId },
       });
       if (duplicateFavorite)
         throw new BadRequestException('Favorite has been add in out system !');

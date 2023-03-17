@@ -6,7 +6,7 @@ import { CssBaseline } from '@mui/material';
 import { Provider } from 'react-redux';
 import { store } from '@/redux/store';
 import Theme from '@/layouts/Theme';
-import AuthProvider, { AuthState, getUser } from '@/context/auth.context';
+import AuthProvider, { AuthState } from '@/context/auth.context';
 import {
   Hydrate,
   QueryClient,
@@ -28,18 +28,18 @@ import 'react-toastify/dist/ReactToastify.css';
 import App from 'next/app';
 import AxiosConfig from '@/layouts/AxiosConfig';
 import NextNProgress from 'nextjs-progressbar';
+import PersistLogin from '@/layouts/PersistLogin';
 
 interface MyAppProps extends AppProps {
   auth: AuthState | null
 }
-
 
 setLogger({
   error: () => { },
   log: () => { },
   warn: () => { },
 })
-export default function MyApp({ Component, pageProps, auth }: MyAppProps) {
+export default function MyApp({ Component, pageProps }: MyAppProps) {
   const [queryClient] = React.useState(() => new QueryClient({
     defaultOptions: {
       queries: {
@@ -55,11 +55,13 @@ export default function MyApp({ Component, pageProps, auth }: MyAppProps) {
       <Theme>
         <QueryClientProvider client={queryClient}>
           <Hydrate state={pageProps.dehydratedState}>
-            <AuthProvider value={auth}>
-              <AxiosConfig>
-                <NextNProgress options={{ showSpinner: false }} />
-                <Component {...pageProps} />
-              </AxiosConfig>
+            <AuthProvider>
+              <PersistLogin>
+                <AxiosConfig>
+                  <NextNProgress options={{ showSpinner: false }} />
+                  <Component {...pageProps} />
+                </AxiosConfig>
+              </PersistLogin>
             </AuthProvider>
           </Hydrate>
         </QueryClientProvider>
@@ -67,10 +69,4 @@ export default function MyApp({ Component, pageProps, auth }: MyAppProps) {
       </Theme>
     </Provider>
   </>
-}
-
-MyApp.getInitialProps = async (appContext: AppContext) => {
-  const appProps = await App.getInitialProps(appContext)
-  const auth = await getUser(appContext.ctx)
-  return { ...appProps, auth: auth }
 }

@@ -53,7 +53,7 @@ const CastSlide: FC<CastSlideProps> = ({ mediaType, mediaId }) => {
                     {credits && credits.cast &&
                         credits.cast.map((actor) => {
                             return (
-                                <SwiperSlide key={actor.cast_id}>
+                                <SwiperSlide key={actor.id}>
                                     <CastItem actor={actor} />
                                 </SwiperSlide>
                             );

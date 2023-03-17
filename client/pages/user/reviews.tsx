@@ -40,7 +40,7 @@ const ReviewsPage = () => {
     return (
         <DefaultLayout>
             <Container maxWidth={false} sx={{ maxWidth: '1400px', pt: 10 }}>
-                <TitleLine title={`Your Reviews (${reviews?.length})`} />
+                <TitleLine title={`Your Reviews (${reviews?.length || 0})`} />
                 <Stack direction="column" spacing={1}>
                     {reviews &&
                         reviews.length > 0 &&
