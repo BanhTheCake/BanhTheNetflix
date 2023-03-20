@@ -5,7 +5,7 @@
 -   Backend: NestJs
 -   Database: mysql (Sequelize)
 -   UI/UX: material UI
--   Demo: https://banhthenetflix.vercel.app/
+-   Demo: https://banhthenetflix.vercel.app/ ( If the web not response or error please reload again !)
 
 # Features
 
