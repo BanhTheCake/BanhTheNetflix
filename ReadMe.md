@@ -2,6 +2,7 @@
 
 -   Website is remake from (https://www.youtube.com/watch?v=Q_uLi4f27Lc&t=12080s)
 -   Frontend: NextJs
+-   Api: React-query
 -   Backend: NestJs
 -   Database: mysql (Sequelize)
 -   UI/UX: material UI
